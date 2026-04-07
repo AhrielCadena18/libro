@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Libro AR</title>
+
+  <!-- A-Frame + MindAR -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<a-scene mindar-image="imageTargetSrc: targets.mind;"
+         color-space="sRGB"
+         embedded
+         vr-mode-ui="enabled: false"
+         device-orientation-permission-ui="enabled: false">
+
+  <a-assets>
+    <img id="autor" src="autor.jpg">
+  </a-assets>
+
+  <!-- Target -->
+  <a-entity mindar-image-target="targetIndex: 0">
+
+    <!-- Imagen del autor -->
+    <a-image src="#autor"
+             position="0 0.5 0"
+             width="1"
+             height="1"
+             animation="property: scale; from: 0 0 0; to: 1 1 1; dur: 1000">
+    </a-image>
+
+    <!-- Texto -->
+    <a-text value="Autor: Gabriel García Márquez\nEscritor colombiano, Nobel de Literatura."
+            position="0 -0.5 0"
+            align="center"
+            color="white"
+            width="2"
+            animation="property: opacity; from: 0; to: 1; dur: 1500">
+    </a-text>
+
+  </a-entity>
+
+</a-scene>
+
+<script src="script.js"></script>
+</body>
+</html>
